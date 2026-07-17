@@ -1,0 +1,20 @@
+# Editors
+*~
+*.swp
+*.tmp
+
+# Logs
+*.log
+
+# Runtime data
+data/
+backups/
+
+# Certificates
+*.pem
+*.key
+*.crt
+*.p12
+
+# Environment
+.env
