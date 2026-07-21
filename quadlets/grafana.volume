@@ -1,0 +1,11 @@
+[Unit]
+Description=Grafana persistent data volume
+
+[Volume]
+VolumeName=grafana-data
+Label=project=noc
+Label=component=grafana
+Label=purpose=persistent-data
+
+[Install]
+WantedBy=multi-user.target

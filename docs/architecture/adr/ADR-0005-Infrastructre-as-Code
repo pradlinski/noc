@@ -1,0 +1,12 @@
+No permanent infrastructure should be created manually if it can be defined declaratively and reproduced from the Git repository.
+
+Git
+    ↓
+Quadlet
+    ↓
+systemd
+    ↓
+Podman
+    ↓
+Bridge network exists
+

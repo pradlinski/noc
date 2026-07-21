@@ -1,0 +1,24 @@
+[Unit]
+Description=Grafana monitoring dashboard
+Requires=noc-network.service grafana-volume.service
+After=noc-network.service grafana-volume.service
+
+[Container]
+ContainerName=grafana
+Image=docker.io/grafana/grafana:latest
+Network=noc.network
+Volume=grafana.volume:/var/lib/grafana
+PublishPort=192.168.3.12:3001:3000
+Environment=GF_SERVER_HTTP_PORT=3000
+Environment=GF_USERS_ALLOW_SIGN_UP=false
+Environment=GF_PLUGINS_PREINSTALL_AUTO_UPDATE=false
+Label=project=noc
+Label=component=grafana
+
+[Service]
+Restart=on-failure
+RestartSec=10
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target

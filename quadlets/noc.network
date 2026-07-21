@@ -1,0 +1,14 @@
+[Unit]
+Description=NOC monitoring container network
+
+[Network]
+NetworkName=noc
+Driver=bridge
+Subnet=10.19.84.0/24
+Gateway=10.19.84.1
+Label=project=noc
+Label=purpose=monitoring
+
+[Install]
+WantedBy=multi-user.target
+
