@@ -226,4 +226,33 @@ A healthy platform should report:
 * Health endpoint responding
 * No SELinux AVC denials
 
+######################3
+LAB 4
+Prometheus Service - 
+#################
+Starting
 
+sudo systemctl start prometheus.service
+
+Stopping
+
+sudo systemctl stop prometheus.service
+
+Restarting
+
+sudo systemctl restart prometheus.service
+
+Viewing logs
+
+journalctl -u prometheus.service -f
+
+Checking configuration
+
+curl http://192.168.3.12:9091/-/ready
+
+Checking targets
+
+curl http://192.168.3.12:9091/api/v1/targets
+
+
+ 

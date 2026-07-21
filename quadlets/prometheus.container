@@ -1,0 +1,28 @@
+[Unit]
+Description=NOC Prometheus metrics service
+Requires=noc-network.service
+After=noc-network.service
+Requires=prometheus-volume.service
+After=prometheus-volume.service
+
+[Container]
+ContainerName=prometheus
+Image=docker.io/prom/prometheus:latest
+
+Network=noc.network
+
+PublishPort=192.168.3.12:9091:9090
+
+Volume=prometheus.volume:/prometheus
+Volume=/etc/noc/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro,Z
+
+Exec=--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.path=/prometheus --storage.tsdb.retention.time=15d --web.enable-lifecycle
+
+NoNewPrivileges=true
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target

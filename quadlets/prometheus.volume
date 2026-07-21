@@ -1,0 +1,9 @@
+[Unit]
+Description=NOC Prometheus persistent volume
+
+[Volume]
+VolumeName=prometheus-data
+
+[Install]
+WantedBy=multi-user.target
+
