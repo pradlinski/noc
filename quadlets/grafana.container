@@ -1,5 +1,5 @@
 [Unit]
-Description=Grafana monitoring dashboard
+Description=Grafana monitoring and visualization service 
 Requires=noc-network.service grafana-volume.service
 After=noc-network.service grafana-volume.service
 
