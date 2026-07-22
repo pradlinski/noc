@@ -1,0 +1,25 @@
+[Unit]
+Description=NOC Node Exporter host metrics service
+After=network-online.target
+Wants=network-online.target
+
+[Container]
+ContainerName=node-exporter
+Image=quay.io/prometheus/node-exporter:latest
+
+Network=host
+PodmanArgs=--pid=host
+
+Volume=/:/host:ro,rslave
+SecurityLabelDisable=true
+
+Exec=--path.rootfs=/host --web.listen-address=192.168.3.12:9100
+
+NoNewPrivileges=true
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target

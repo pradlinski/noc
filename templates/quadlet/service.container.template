@@ -1,0 +1,28 @@
+[Unit]
+Description=<SERVICE_DESCRIPTION>
+Requires=noc-network.service
+After=noc-network.service
+
+[Container]
+ContainerName=<CONTAINER_NAME>
+Image=<FULLY_QUALIFIED_IMAGE>
+
+Network=noc.network
+
+# Publish only on the management interface.
+PublishPort=192.168.3.12:<HOST_PORT>:<CONTAINER_PORT>
+
+# Add bind mounts or named Quadlet volumes as needed.
+# Volume=<SOURCE>:<DESTINATION>:<OPTIONS>
+
+# Keep all application arguments on one Exec line.
+# Exec=<ARGUMENT_1> <ARGUMENT_2>
+
+NoNewPrivileges=true
+
+[Service]
+Restart=always
+TimeoutStartSec=300
+
+[Install]
+WantedBy=multi-user.target
