@@ -255,4 +255,25 @@ Checking targets
 curl http://192.168.3.12:9091/api/v1/targets
 
 
+##########
+Lab 6 or so
+########
+
+Deploying dashboards:
+
+sudo install -d -m 0755 \
+  /etc/noc/grafana/dashboards
+
+sudo install -m 0644 \
+  dashboards/node-exporter-full.json \
+  /etc/noc/grafana/dashboards/node-exporter-full.json
+
+sudo install -m 0644 \
+  quadlets/grafana.container \
+  /etc/containers/systemd/grafana.container
+
+sudo systemctl daemon-reload
+sudo systemctl restart grafana.service
+#############
+
  

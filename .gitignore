@@ -18,3 +18,17 @@ backups/
 
 # Environment
 .env
+
+# PKI secrets
+*.key
+*.csr
+*.crt
+*.pem
+*.p12
+*.pfx
+
+/private/
+/issued/
+/root/
+/intermediate/
+/crl/

@@ -1,0 +1,45 @@
+ADR-0006: Internal PKI
+
+Status: Accepted
+
+Decision
+
+Build and operate a private PKI for the lab using an offline Root CA and an online Infrastructure Intermediate CA. All certificates used by lab services, network devices, and automation will be issued from the Intermediate CA.
+
+Rationale
+
+Establish a single trust anchor for the entire lab.
+Eliminate ad hoc self-signed certificates.
+Support mutual TLS for protocols such as gNMI.
+Mirror enterprise PKI practices while remaining manageable.
+Keep certificate issuance reproducible through Git-managed scripts and templates.
+
+
+/home/prad/git/noc/
+│
+├── config/
+├── dashboards/
+├── docs/
+├── labs/
+├── quadlets/
+│
+├── pki/
+│   ├── README.md
+│   ├── openssl/
+│   │   ├── root.cnf
+│   │   ├── intermediate.cnf
+│   │   ├── server.cnf
+│   │   └── client.cnf
+│   │
+│   ├── scripts/
+│   │   ├── initialize-pki.sh
+│   │   ├── create-root.sh
+│   │   ├── create-intermediate.sh
+│   │   ├── issue-server.sh
+│   │   ├── issue-client.sh
+│   │   └── revoke.sh
+│   │
+│   ├── templates/
+│   └── examples/
+│
+└── .gitignore
